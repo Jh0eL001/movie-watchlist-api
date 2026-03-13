@@ -8,4 +8,4 @@ router.get('/', (req, res) => {
   res.json( {msg: "HELLO UNIVERSE"});
 })
 
-export default router;
+export default router; // cuando exportamos con default, podemos renombrar la variable como necesitemos.
