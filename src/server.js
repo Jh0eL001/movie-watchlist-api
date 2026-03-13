@@ -1,9 +1,11 @@
 import express from "express";
 import dotenv from 'dotenv';
-dotenv.config(); // Aquí ocurre la magia: lee el archivo y llena el objeto process.env
+import { connectDB, disconnectDB } from "./config/db.js";
 
+dotenv.config(); // Aquí ocurre la magia: lee el archivo y llena el objeto process.env
+connectDB();
 // IMPORT ROUTES
-import movieRoutes from "./routes/movieRoutes.js"
+import movieRoutes from "./routes/movieRoutes.js";
 
 const app = express();
 // API ROUTES
