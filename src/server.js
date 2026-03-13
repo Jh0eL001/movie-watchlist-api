@@ -1,15 +1,20 @@
-import express from "express";
+import express, { json } from "express";
 import dotenv from 'dotenv';
 import { connectDB, disconnectDB } from "./config/db.js";
 // IMPORT ROUTES
 import movieRoutes from "./routes/movieRoutes.js";
+import authRoutes from "./routes/authRoutes.js";
 
 dotenv.config(); // lee el archivo y llena el objeto process.env
 connectDB();
 
 const app = express();
+// BODY PARSING MIDDLEWARES
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 // API ROUTES
 app.use("/movies", movieRoutes);
+app.use("/auth", authRoutes);
 
 const PORT = process.env.PORT || 5001;
 app.listen(PORT, () => {
